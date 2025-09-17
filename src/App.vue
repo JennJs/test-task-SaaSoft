@@ -119,7 +119,9 @@ const onRecordTypeChange = (event: RecordType, account: IAccount) => {
                 " />
             </td>
             <td>
-              <button class="h-full align-top" @click="removeAccount(account.id)">
+              <button
+                class="mt-[5px] hover:bg-gray-50 hover:rounded"
+                @click="removeAccount(account.id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
                     fill="none"
