@@ -4,7 +4,9 @@ import { InputType } from '@/enums/InputType.ts'
 
 interface Props {
   type: InputType
-  modelValue: string
+  modelValue: string | null
+  onBlur: () => void
+  error: string | null
 }
 
 interface Emits {
@@ -39,12 +41,16 @@ const handleChange = (event: Event) => {
       :type="inputType"
       :value="modelValue"
       @input="handleChange"
-      class="w-full border rounded py-2 px-3 pr-10 focus:outline-none focus:ring focus:border-blue-500" />
+      @blur="onBlur"
+      :class="[
+        'w-full border rounded border-gray-300 py-1 px-2 pr-10 focus:outline-none focus:ring focus:border-blue-500',
+        error && 'border-red-300',
+      ]" />
     <button
       v-if="type === InputType.PASSWORD"
       type="button"
       @click="toggleVisibility"
-      class="absolute inset-y-0 right-0 px-3 flex items-center focus:outline-none">
+      class="absolute top-[5px] right-0 px-3 flex items-center focus:outline-none">
       <svg
         v-if="isPasswordVisible"
         xmlns="http://www.w3.org/2000/svg"
@@ -71,5 +77,6 @@ const handleChange = (event: Event) => {
         </g>
       </svg>
     </button>
+    <span v-if="error" class="block mt-1 text-xs text-red-400">{{ error }}</span>
   </div>
 </template>

@@ -28,7 +28,7 @@ const onChange = (event: Event) => {
   <select
     :value="selected"
     @change="onChange"
-    class="w-full border rounded py-2 px-3 pr-10 focus:outline-none focus:ring focus:border-blue-500">
+    class="w-full min-h-[34px] border rounded border-gray-300 py-1 px-2 pr-4 focus:outline-none focus:ring focus:border-blue-500">
     <option v-for="option in options" :key="option" :value="option">
       {{ option }}
     </option>
